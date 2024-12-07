@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Your Cart</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td><img src="{{ item['image_path'] }}" alt="{{ item['name'] }}" style="width: 50px;"></td>
+                <td>{{ item['name'] }}</td>
+                <td>TSH {{ item['price'] }}</td>
+                <td>{{ item['quantity'] }}</td>
+                <td>TSH {{ item['total'] }}</td>
+                <td>
+                    <form method="POST" action="/update_cart" class="d-inline">
+                        <input type="hidden" name="product_id" value="{{ item['id'] }}">
+                        <button type="submit" name="action" value="increase" class="btn btn-sm btn-success">+</button>
+                        <button type="submit" name="action" value="decrease" class="btn btn-sm btn-warning">-</button>
+                    </form>
+                    <form method="POST" action="/remove_from_cart" class="d-inline">
+                        <input type="hidden" name="product_id" value="{{ item['id'] }}">
+                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<h3>Total: TSH {{ cart_total }}</h3>
+<form method="POST" action="/checkout">
+    <button class="btn btn-primary">Proceed to Checkout</button>
+</form>
+{% endblock %}
