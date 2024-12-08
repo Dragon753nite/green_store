@@ -1,0 +1,5 @@
+Host: mysql-1b4be9a5-nial753john-3f84.i.aivencloud.com
+Database name: defaultdb
+Database user: avnadmin
+Database password: AVNS___qAXU5towJyWsy1M8w
+Port number: 20727

@@ -6,10 +6,10 @@ app.secret_key = "Banana&Applesin1999"
 
 def auth_user():
     connection = pymysql.connect(
-            host='localhost',
-            user='client',
-            password='!Passw0rd?',
-            database='greenstore'
+            host='mysql-1b4be9a5-nial753john-3f84.i.aivencloud.com',
+            user='avnadmin',
+            password='AVNS___qAXU5towJyWsy1M8w',
+            database='defaultdb'
         )
     cursor = connection.cursor()
     return cursor, connection
