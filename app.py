@@ -7,6 +7,7 @@ app.secret_key = "Banana&Applesin1999"
 def auth_user():
     connection = pymysql.connect(
             host='mysql-1b4be9a5-nial753john-3f84.i.aivencloud.com',
+            port=20727,
             user='avnadmin',
             password='AVNS___qAXU5towJyWsy1M8w',
             database='defaultdb'
