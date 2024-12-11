@@ -7,6 +7,7 @@ app.secret_key = "Banana&Applesin1999"
 def auth_user():
     connection = pymysql.connect(
             host='mysql-1b4be9a5-nial753john-3f84.i.aivencloud.com',
+            port=20727,
             user='avnadmin',
             password='AVNS___qAXU5towJyWsy1M8w',
             database='defaultdb'
@@ -26,6 +27,15 @@ def flowers():
     products = cursor.fetchall()
     connection.close()
     return render_template("products.html", title="Flowers", products=products)
+
+@app.route("/products/plants")
+def plants():
+    cursor, connection = auth_user()
+    cursor = connection.cursor(pymysql.cursors.DictCursor)
+    cursor.execute("SELECT * FROM plants")
+    products = cursor.fetchall()
+    connection.close()
+    return render_template("products.html", title="Plants", products=products)
 
 @app.route("/add_to_cart", methods=["POST"])
 def add_to_cart():
